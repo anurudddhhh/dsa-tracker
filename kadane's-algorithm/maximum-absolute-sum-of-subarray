@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxAbsoluteSum(vector<int>& nums) {
+        int max_e=nums[0];
+        int min_e=nums[0];
+        int ans=nums[0];
+        if(nums.size()==1) return abs(nums[0]);
+        for(int i=1;i<nums.size();i++){
+            max_e=max(max_e+nums[i],nums[i]);
+            min_e=min(min_e+nums[i],nums[i]);
+
+            ans=max(ans,max(abs(max_e),abs(min_e)));
+        }
+        return ans;
+    }
+};
