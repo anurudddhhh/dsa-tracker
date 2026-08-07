@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int low=0,high=0,n=s.size();
+        int count=0;
+        unordered_map<char,int>f;
+        for(int high=0;high<n;high++){
+            f[s[high]]++;
+            while(f.size()==3){
+                count+=n-high;
+                f[s[low]]--;
+                if(f[s[low]]==0) f.erase(s[low]);
+                low++;
+            }
+        }
+
+        return count;
+        
+    }
+};
